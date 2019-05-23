@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Класс, управляющий спауном нужных окон
+/// </summary>
 public class WindowAgregator : MonoBehaviour
 {
     public static System.Action<string> SetWindowHandler = delegate { };
-    public List<GameObject> WindowsInMemory = new List<GameObject>();
+    public List<Window> WindowsInMemory = new List<Window>();
     
     private void OnEnable()
     {
@@ -30,6 +33,9 @@ public class WindowAgregator : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Загружаем канвас.
+    /// </summary>
     private void CreateCanvas()
     {
         GameObject gameObject = Resources.Load<GameObject>("Canvas");
