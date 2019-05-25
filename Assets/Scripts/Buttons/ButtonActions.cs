@@ -6,6 +6,9 @@ public class ButtonActions : ButtonSetter
    
     public override void Action()
     {
-        Events.Invoke();
+        if (window.Focus)
+        {
+           Events.Invoke();
+        }
     }
 }
