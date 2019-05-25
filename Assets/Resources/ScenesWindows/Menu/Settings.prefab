@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7474158156677630782}
   - component: {fileID: 5686990812635023836}
   - component: {fileID: 8597047441343217397}
+  - component: {fileID: 933355672706269743}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -35,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.005935669, y: 0.003753662}
+  m_AnchoredPosition: {x: 0.00592041, y: 0.003753662}
   m_SizeDelta: {x: -0.6799927, y: -0.070007324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5686990812635023836
@@ -75,6 +76,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &933355672706269743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148233136637223785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528943892d06bf44d8e7a19fbf2295ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idWindow: Settings
 --- !u!1 &4295412198898647032
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +182,7 @@ GameObject:
   - component: {fileID: 4038072392581204357}
   - component: {fileID: 403320195410679125}
   - component: {fileID: 6501139494447256655}
+  - component: {fileID: 6594137264479777630}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -274,3 +289,16 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6594137264479777630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363882234984283475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efe2b3129f0b0743b4355d015c42bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}

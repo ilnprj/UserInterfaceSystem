@@ -11,22 +11,26 @@ public class Window : MonoBehaviour, IWindow
         OnOpen();
     }
 
-    public virtual void OnDestroy()
-    {
-        OnClose();
-    }
-
-
     /// <summary>
     /// В данных методах мы можем дополнительно реализовать решения которые будут распространяться на все остальные окна
     /// </summary>
     public void OnOpen()
     {
-        Debug.Log("OnOpen");
+        WindowAgregator.AddWindowHandler(this);
     }
+
+#if UNITY_STANDALONE
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnClose();
+        }
+    }
+#endif
 
     public void OnClose()
     {
-        Debug.Log("OnClose");
+        WindowAgregator.RemoveWindowHandler(this);
     }
 }

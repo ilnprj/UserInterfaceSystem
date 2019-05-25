@@ -6,12 +6,19 @@ public abstract class ButtonSetter : MonoBehaviour
     [HideInInspector]
     public Button button;
 
-    private void Awake()
+    public virtual void Awake()
     {
         button = GetComponent<Button>();
         if (!button)
         {
             Destroy(this);
         }
+    }
+
+    public virtual void Start() => button.onClick.AddListener(delegate { Action(); });
+
+    public virtual void Action()
+    {
+
     }
 }

@@ -3,9 +3,11 @@
 /// </summary>
 public class ButtonTransition : ButtonSetter
 {
+    [UnityEngine.Header("id окна которое нужно вызвать:")]
     public string id;
-    
-    private void Start() => button.onClick.AddListener(delegate { Transition();});
 
-    private void Transition() => WindowAgregator.SetWindowHandler(id);
+    public override void Action()
+    {
+        WindowAgregator.SetWindowHandler(id);
+    }
 }
