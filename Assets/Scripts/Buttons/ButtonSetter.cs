@@ -6,10 +6,14 @@ public abstract class ButtonSetter : MonoBehaviour
     [HideInInspector]
     public Button button;
 
+    [HideInInspector]
+    public Window window;
+
     public virtual void Awake()
     {
         button = GetComponent<Button>();
-        if (!button)
+        window = GetComponentInParent<Window>();
+        if (!button || !window)
         {
             Destroy(this);
         }
