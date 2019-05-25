@@ -4,6 +4,8 @@
 /// </summary>
 public class Window : MonoBehaviour, IWindow
 {
+    public string idWindow;
+
     public virtual void OnEnable()
     {
         OnOpen();
@@ -21,12 +23,10 @@ public class Window : MonoBehaviour, IWindow
     public void OnOpen()
     {
         Debug.Log("OnOpen");
-        new System.NotImplementedException();
     }
 
     public void OnClose()
     {
         Debug.Log("OnClose");
-        new System.NotImplementedException();
     }
 }

@@ -1,14 +1,10 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
 
-public class ButtonActions : MonoBehaviour
+public class ButtonActions : ButtonSetter
 {
     public UnityEvent Actions;
-    private Button btn;
-
-    private void Awake() => btn.onClick.AddListener(delegate { CallAction(); });
+    
+    private void Start() => button.onClick.AddListener(delegate { CallAction(); });
 
     private void CallAction() => Actions.Invoke();
-
 }

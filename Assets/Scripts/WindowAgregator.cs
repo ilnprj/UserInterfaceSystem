@@ -9,22 +9,17 @@ public class WindowAgregator : MonoBehaviour
 {
     public static System.Action<string> SetWindowHandler = delegate { };
     public List<Window> WindowsInMemory = new List<Window>();
-    
-    private void OnEnable()
+    private Canvas canvas;
+
+    private void Awake()
     {
-        CreateCanvas();
+        CreateInterface();
     }
 
     private void OnDisable()
     {
         
     }
-
-    private void LoadStartWindow()
-    {
-
-    }
-
     /// <summary>
     /// Выгружаем из памяти нужное окно
     /// </summary>
@@ -36,10 +31,14 @@ public class WindowAgregator : MonoBehaviour
     /// <summary>
     /// Загружаем канвас.
     /// </summary>
-    private void CreateCanvas()
+    private void CreateInterface()
     {
-        GameObject gameObject = Resources.Load<GameObject>("Canvas");
-        gameObject = Instantiate(gameObject, this.transform);
-        
+        canvas = Resources.Load<Canvas>("Canvas");
+        canvas = Instantiate(canvas, this.transform);
+
+        StartWindow sObject = Resources.Load<StartWindow>("StartPoints/Menu");
+        Window startWindow = sObject.GetWindow;
+        startWindow = Instantiate<Window>(startWindow, canvas.transform);
+        WindowsInMemory.Add(startWindow);
     }
 }

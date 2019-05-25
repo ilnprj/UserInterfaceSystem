@@ -1,15 +1,11 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// Кнопка перехода
 /// </summary>
-public class ButtonTransition : MonoBehaviour
+public class ButtonTransition : ButtonSetter
 {
     public string id;
-    private Button btn;
     
-    private void Awake() =>  btn.onClick.AddListener(delegate { Transition();});
+    private void Start() => button.onClick.AddListener(delegate { Transition();});
 
     private void Transition() => WindowAgregator.SetWindowHandler(id);
 }

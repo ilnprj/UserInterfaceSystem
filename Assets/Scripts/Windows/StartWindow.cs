@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class StartWindow : MonoBehaviour
+/// <summary>
+/// Стартовый экран для сцены
+/// </summary>\
+[CreateAssetMenu(fileName = "StartWindow",menuName = "Create Start Window",order = 0)]
+public class StartWindow : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Window window;
 
-    // Update is called once per frame
-    void Update()
+    public Window GetWindow
     {
-        
+        get
+        {
+            return window;
+        }
     }
 }
