@@ -1,5 +1,4 @@
-﻿
-public class UserProfile : Window
+﻿public class UserProfile : Window
 {
 
 }

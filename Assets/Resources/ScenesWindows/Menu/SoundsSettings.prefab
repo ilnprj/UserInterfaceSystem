@@ -273,6 +273,8 @@ GameObject:
   - component: {fileID: 5686990812635023836}
   - component: {fileID: 8597047441343217397}
   - component: {fileID: 5614241094604844680}
+  - component: {fileID: 3866792679923253107}
+  - component: {fileID: 9101689762827815908}
   m_Layer: 5
   m_Name: SoundsSettings
   m_TagString: Untagged
@@ -349,6 +351,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110c4d57a396fc246863c788fe06587f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Focus: 0
+--- !u!114 &3866792679923253107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148233136637223785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b44da71e5da2ca4a9fec8ae6238de5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &9101689762827815908
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148233136637223785}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3456434648258175514
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  window: {fileID: 0}
 --- !u!1 &8167517789010279792
 GameObject:
   m_ObjectHideFlags: 0

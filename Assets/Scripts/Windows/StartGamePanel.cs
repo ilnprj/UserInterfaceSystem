@@ -1,6 +1,4 @@
-﻿
-
-public class StartGamePanel : Window
+﻿public class StartGamePanel : Window
 {
    
 }
