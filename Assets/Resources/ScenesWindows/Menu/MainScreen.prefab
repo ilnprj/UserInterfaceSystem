@@ -89,6 +89,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5486431267032964084}
   - component: {fileID: 2685947533047455703}
+  - component: {fileID: 8241849661529978524}
+  - component: {fileID: 4894188084854331670}
   m_Layer: 5
   m_Name: MainScreen
   m_TagString: Untagged
@@ -129,6 +131,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 528943892d06bf44d8e7a19fbf2295ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Focus: 0
+--- !u!225 &8241849661529978524
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668581689801596661}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &4894188084854331670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668581689801596661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b44da71e5da2ca4a9fec8ae6238de5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3179010098473653403
@@ -263,7 +290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  window: {fileID: 0}
   id: GamePanel
+  needClose: 0
 --- !u!1 &4139093907322224985
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  window: {fileID: 0}
   id: Settings
+  needClose: 0
 --- !u!114 &1558572228497891009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
+  window: {fileID: 0}
   Events:
     m_PersistentCalls:
       m_Calls: []

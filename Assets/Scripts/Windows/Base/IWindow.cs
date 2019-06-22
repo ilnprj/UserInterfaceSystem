@@ -6,5 +6,7 @@ public interface IWindow
 {
     void OnOpen();
 
+    void OnRefresh();
+
     void OnClose();
 }

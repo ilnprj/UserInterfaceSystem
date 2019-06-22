@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class ButtonSetter : MonoBehaviour
+public abstract class ButtonBaseBehaviour : MonoBehaviour
 {
     [HideInInspector]
     public Button button;

@@ -91,6 +91,8 @@ GameObject:
   - component: {fileID: 5686990812635023836}
   - component: {fileID: 8597047441343217397}
   - component: {fileID: 3846594978388299243}
+  - component: {fileID: 5104278717946488746}
+  - component: {fileID: 7913915711783336816}
   m_Layer: 5
   m_Name: GamePanel
   m_TagString: Untagged
@@ -166,6 +168,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd602eb08227148448674109b3cc369b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Focus: 0
+--- !u!225 &5104278717946488746
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148233136637223785}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7913915711783336816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148233136637223785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b44da71e5da2ca4a9fec8ae6238de5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4295412198898647032

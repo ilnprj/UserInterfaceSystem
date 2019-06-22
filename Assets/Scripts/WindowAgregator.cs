@@ -32,6 +32,17 @@ public class WindowAgregator : MonoBehaviour
         CreateInterface();
     }
 
+#if UNITY_STANDALONE
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (WindowsInHistory.Count>1)
+            WindowsInHistory[WindowsInHistory.Count-1].OnClose();
+        }
+    }
+#endif
+
     private void OnDisable()
     {
         SetWindowHandler -= OnSetWindowHanlder;

@@ -1,8 +1,8 @@
 ﻿/// <summary>
 /// Кнопка которая назначается автоматически и закрывает текущее окно.
 /// </summary>
-/// 
-public class ButtonClose : ButtonSetter
+
+public class ButtonClose : ButtonBaseBehaviour
 {
     /// <summary>
     /// Действие которое автоматически подписывается на клик кнопки родительским классом.
