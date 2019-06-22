@@ -9,21 +9,21 @@ public class AlphaAnimation : MonoBehaviour, IAnimationWindow
     private void OnEnable()
     {
         if (!canvas) canvas = GetComponent<CanvasGroup>();
-        StartCoroutine(AnimationCanvas(0, 1));
+        OnOpenWindowAnim();
     }
 
 
-    public void OnCloseWinodwAnim()
+    public void OnCloseWinodwAnim(Action handlerClose)
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(AnimationCanvas(1, 0, handlerClose));
     }
 
     public void OnOpenWindowAnim()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(AnimationCanvas(0, 1, null));
     }
 
-    private IEnumerator AnimationCanvas(float start, float target)
+    private IEnumerator AnimationCanvas(float start, float target, Action endAnimationHandler)
     {
         float elapsedTime = 0;
         
@@ -33,6 +33,10 @@ public class AlphaAnimation : MonoBehaviour, IAnimationWindow
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        canvas.alpha = target;
+
+        if (endAnimationHandler!=null)
+        endAnimationHandler.Invoke();
     }
     
 

@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Кнопка которая назначается автоматически и закрывает текущее окно.
 /// </summary>
-/// 
+
 public class ButtonClose : ButtonBaseBehaviour
 {
     /// <summary>

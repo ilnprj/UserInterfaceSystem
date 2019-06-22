@@ -1,5 +1,7 @@
-﻿public interface IAnimationWindow
+﻿using System;
+
+public interface IAnimationWindow
 {
     void OnOpenWindowAnim();
-    void OnCloseWinodwAnim();
+    void OnCloseWinodwAnim(Action closeHandler);
 }
