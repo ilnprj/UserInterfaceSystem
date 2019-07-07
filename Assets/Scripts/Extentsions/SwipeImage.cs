@@ -2,12 +2,16 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Swipe Image Controller with custom Unity Events
+/// </summary>
 public class SwipeImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private Vector2 Start, End;
-    private UnityEvent eventHorizontal;
-    private UnityEvent eventVertical;
-    private const int LENGHT_SWIPE = 80;
+    public UnityEvent eventHorizontal = new UnityEvent();
+    public UnityEvent eventVertical = new UnityEvent();
+    private const int LENGHT_SWIPE = 100;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         Start = eventData.position;
@@ -17,33 +21,33 @@ public class SwipeImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         End = eventData.position;
         SetSwipe(Start, End);
-
     }
 
     private void SetSwipe(Vector2 aPoint, Vector2 bPoint)
     {
         Vector2 res = aPoint - bPoint;
-        float xSwipe, ySwipe;
-        xSwipe = res.x / Screen.width;
-        ySwipe = res.y / Screen.height;
 
         if (res.x > LENGHT_SWIPE)
         {
             eventHorizontal.Invoke();
+            Debug.Log("RIGHT");
         }
         if (res.x < -LENGHT_SWIPE)
         {
             eventHorizontal.Invoke();
+            Debug.Log("LEFT");
         }
 
         if (res.y > LENGHT_SWIPE)
         {
             eventVertical.Invoke();
+            Debug.Log("UP");
         }
 
         if (res.y < -LENGHT_SWIPE)
         {
             eventVertical.Invoke();
+            Debug.Log("DOWN");
         }
     }
 }

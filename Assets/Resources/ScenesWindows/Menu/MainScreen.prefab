@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5486431267032964084}
   - component: {fileID: 2685947533047455703}
   - component: {fileID: 8241849661529978524}
-  - component: {fileID: 4894188084854331670}
+  - component: {fileID: 5474759554191726647}
   m_Layer: 5
   m_Name: MainScreen
   m_TagString: Untagged
@@ -146,7 +146,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4894188084854331670
+--- !u!114 &5474759554191726647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 5811827993888689393}
   - component: {fileID: 5496417758100164910}
   - component: {fileID: 462409643167728806}
+  - component: {fileID: 3510424845143837353}
   m_Layer: 5
   m_Name: LogoName
   m_TagString: Untagged
@@ -680,3 +681,49 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: NAME APP
+--- !u!114 &3510424845143837353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301287610810502158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb95919749c118849be4db619b9578b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curveItem:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  TypePlayCurve: 2
+  Duration: 3
+  DelaySeconds: 0
+  eventOnFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  From: {x: 0, y: 0, z: 0}
+  To: {x: 1, y: 1, z: 1}
