@@ -12,14 +12,18 @@ public class WindowAgregator : MonoBehaviour
     public static Action<Window> AddWindowHandler = delegate { };
     public static Action<Window> RemoveWindowHandler = delegate { };
 
+    [Header("Предварительно настроенный Canvas:")]
+    public Canvas Canvas;
+    [Header("Стартовое окно интерфейса:")] 
+    public WindowAsset StartWindow;
+    [Header("Окна выгружаемые в сцену:")]
+    public List<WindowAsset> WindowForScene = new List<WindowAsset>();
     [Header("Активные окна:")]
     public List<Window> WindowsInHistory = new List<Window>();
 
     [Header("Окна в пуле:")]
     public List<Window> WindowsPool = new List<Window>();
 
-    private Canvas canvas = null;
-    
     private void OnEnable()
     {
         SetWindowHandler += OnSetWindowHanlder;
@@ -35,11 +39,9 @@ public class WindowAgregator : MonoBehaviour
 #if UNITY_STANDALONE
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (WindowsInHistory.Count>1)
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+        if (WindowsInHistory.Count>1)
             WindowsInHistory[WindowsInHistory.Count-1].OnClose();
-        }
     }
 #endif
 
@@ -55,14 +57,12 @@ public class WindowAgregator : MonoBehaviour
     /// </summary>
     private void CreateInterface()
     {
-        canvas = Resources.Load<Canvas>("ScenesWindows/Canvas");
-        canvas = Instantiate(canvas, this.transform);
+        Canvas = Instantiate(Canvas, transform);
         try
         {
-            StartWindow sObject = Resources.Load<StartWindow>("StartPoints/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-            Window startWindow = sObject.GetWindow;
-            startWindow = Instantiate<Window>(startWindow, canvas.transform);
-            startWindow.name = sObject.GetWindow.gameObject.name;
+            var startWindow = StartWindow.Window;
+            startWindow = Instantiate(startWindow, Canvas.transform);
+            startWindow.name = StartWindow.Id;
             WindowsInHistory.Add(startWindow);
         }
         catch (Exception e)
@@ -77,22 +77,19 @@ public class WindowAgregator : MonoBehaviour
     /// </summary>
     private void OnSetWindowHanlder(string idWindow)
     {
-        Window newWindow = new Window();
-        newWindow = SearchWindowInPool(idWindow);
+        var newWindow = SearchWindowInPool(idWindow);
         //Если элемента нет в пуле и нет в активной истории окон то спауним.
         if (!HasWindowExist(idWindow))
         {
-            Window spawnWindow = Resources.Load<Window>("ScenesWindows/" + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + "/" + idWindow);
-            newWindow = Instantiate<Window>(spawnWindow, canvas.transform);
+            var spawnWindow = WindowForScene.SingleOrDefault(obj => obj.Id == idWindow);
+            newWindow = Instantiate(spawnWindow.Window, Canvas.transform);
             newWindow.name = spawnWindow.name;
         }
         else
         {
-            if (newWindow!=null)
-            {
-                WindowsPool.Remove(newWindow);
-                newWindow.gameObject.SetActive(true);
-            }
+            if (newWindow == null) return;
+            WindowsPool.Remove(newWindow);
+            newWindow.gameObject.SetActive(true);
         }
     }
 
@@ -104,25 +101,23 @@ public class WindowAgregator : MonoBehaviour
     private void OnRemovingWindowHandler(Window window)
     {
         //Мы не можем удалить самое первое окно интерфейса.
-        if (WindowsInHistory.Count > 1)
-        {
-            window.gameObject.SetActive(false);
-            WindowsInHistory.Remove(window);
-            //Если предыдущее окно по правилам было выключено, мы включаем его (возвращаясь назад по истории окон).
-            WindowsInHistory[WindowsInHistory.Count-1].gameObject.SetActive(true);
-            //Активируем фокус окна обратно, позволяя ему ряд обозначенных действий
-            WindowsInHistory[WindowsInHistory.Count - 1].Focus = true;
-            WindowsPool.Add(window);
-        }
+        if (WindowsInHistory.Count <= 1) return;
+        window.gameObject.SetActive(false);
+        WindowsInHistory.Remove(window);
+        //Если предыдущее окно по правилам было выключено, мы включаем его (возвращаясь назад по истории окон).
+        WindowsInHistory[WindowsInHistory.Count-1].gameObject.SetActive(true);
+        //Активируем фокус окна обратно, позволяя ему ряд обозначенных действий
+        WindowsInHistory[WindowsInHistory.Count - 1].Focus = true;
+        WindowsPool.Add(window);
     }
 
     private Window SearchWindowInPool(string idWindow)
     {
-        return WindowsPool.Where(obj => obj.name == idWindow).SingleOrDefault();
+        return WindowsPool.SingleOrDefault(obj => obj.name == idWindow);
     }
 
     private bool HasWindowExist(string idWindow)
     {
-        return (WindowsInHistory.Where(obj => obj.name == idWindow).SingleOrDefault() || WindowsPool.Where(obj => obj.name == idWindow).SingleOrDefault());
+        return WindowsInHistory.SingleOrDefault(obj => obj.name == idWindow) || WindowsPool.SingleOrDefault(obj => obj.name == idWindow);
     }
 }
