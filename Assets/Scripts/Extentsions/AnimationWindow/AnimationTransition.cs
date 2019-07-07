@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-public class AlphaAnimation : MonoBehaviour, IAnimationWindow
+public class AnimationTransition : MonoBehaviour, IAnimationWindow
 {
     private CanvasGroup canvas;
     private const float TIME_ANIMATION = 0.5f;
@@ -38,7 +38,4 @@ public class AlphaAnimation : MonoBehaviour, IAnimationWindow
         if (endAnimationHandler!=null)
         endAnimationHandler.Invoke();
     }
-    
-
-    
 }
