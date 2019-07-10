@@ -557,7 +557,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  TypePlayCurve: 2
+  TypePlayCurve: 0
   Duration: 1
   DelaySeconds: 0
   KoefAnim: 0

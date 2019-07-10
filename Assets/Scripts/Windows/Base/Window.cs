@@ -14,6 +14,7 @@ public class Window : MonoBehaviour, IWindow
 
     private IAnimationWindow animation;
     private Action handlerClose = delegate { };
+    
     /// <summary>
     /// Что делаем при открытии окна
     /// </summary>
@@ -52,7 +53,6 @@ public class Window : MonoBehaviour, IWindow
     /// </summary>
     public void OnClose()
     {
-
         if (animation != null)
         {
             animation.OnCloseWinodwAnim(handlerClose);
