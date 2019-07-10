@@ -2,6 +2,7 @@
 using UnityEngine;
 public class RectSlot : MonoBehaviour
 {
+    [HideInInspector]
     public RectTransform RectTransform;
 
     private void Awake()

@@ -1,16 +1,22 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Модуль, обеспечивающий авто привязку элемента в слот.
+/// </summary>
 public class DropToSlotLerp : EventTrigger
 {
     private RectTransform target;
-    private RectTransform RectTransform;
-    private bool lerping;
+    private RectTransform rectTransform;
+    
+    private List<RectSlot> _allSlots = new List<RectSlot>(); 
+    private bool _lerping;
     private void Start()
     {
-        target = FindObjectOfType<SlotsContainer>().Slot.RectTransform;
-        RectTransform = GetComponent<RectTransform>();
+        _allSlots = FindObjectOfType<SlotsContainer>().RectSlots;
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public override void OnPointerDown(PointerEventData eventData)
@@ -25,7 +31,7 @@ public class DropToSlotLerp : EventTrigger
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        if (Vector3.Distance(RectTransform.position, target.position) < 200.0f)
+        if (Vector3.Distance(rectTransform.position, target.position) < 200.0f)
         {
             StartCoroutine(LerpToTarget());
         }
@@ -33,11 +39,12 @@ public class DropToSlotLerp : EventTrigger
 
     private IEnumerator LerpToTarget()
     {
-        lerping = true;
+        _lerping = true;
+        rectTransform.SetParent(target);
         float elapsedTime = 0;
-        while (elapsedTime < 1.0f && lerping)
+        while (elapsedTime < 1.0f && _lerping)
         {
-            RectTransform.position = Vector3.Lerp(RectTransform.position, target.position, elapsedTime / 1.0f);
+            rectTransform.position = Vector3.Lerp(rectTransform.position, target.position, elapsedTime / 1.0f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -45,7 +52,7 @@ public class DropToSlotLerp : EventTrigger
 
     private void StopLerp()
     {
-        lerping = false;
+        _lerping = false;
         StopCoroutine(LerpToTarget());
     }
 }

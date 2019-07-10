@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70bd77a6e4ee1514d985bb1160f1c8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: {fileID: 0}
+  RectSlots: []
 --- !u!4 &245659256
 Transform:
   m_ObjectHideFlags: 0
@@ -855,9 +855,9 @@ RectTransform:
   m_Father: {fileID: 433902791}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -149, y: -93}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 773, y: -94}
   m_SizeDelta: {x: 167.90002, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125856569
@@ -921,6 +921,7 @@ GameObject:
   - component: {fileID: 1485336617}
   - component: {fileID: 1485336619}
   - component: {fileID: 1485336618}
+  - component: {fileID: 1485336620}
   m_Layer: 5
   m_Name: Slot_Layout_1
   m_TagString: Untagged
@@ -985,6 +986,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485336616}
   m_CullTransparentMesh: 0
+--- !u!114 &1485336620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485336616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f8ed54c8ddc840ae5ea1e6d478807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RectTransform: {fileID: 0}
 --- !u!1 &1737657910
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1010,7 @@ GameObject:
   - component: {fileID: 1737657911}
   - component: {fileID: 1737657913}
   - component: {fileID: 1737657912}
+  - component: {fileID: 1737657914}
   m_Layer: 5
   m_Name: Slot_Layout_2
   m_TagString: Untagged
@@ -1060,6 +1075,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737657910}
   m_CullTransparentMesh: 0
+--- !u!114 &1737657914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737657910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f8ed54c8ddc840ae5ea1e6d478807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RectTransform: {fileID: 0}
 --- !u!1 &1980838943
 GameObject:
   m_ObjectHideFlags: 0
