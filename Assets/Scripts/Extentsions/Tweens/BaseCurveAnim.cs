@@ -14,9 +14,9 @@ public class BaseCurveAnim : MonoBehaviour
     [Header("Длительность анимации:")]
     public float Duration = 1.0f;
     [Header("Задержка перед анимацией:")]
-    public float DelaySeconds = 0.0f;
+    public float DelaySeconds;
 
-    [HideInInspector] public int KoefAnim = 0;
+    [HideInInspector] public int KoefAnim;
     public enum TypeAnimation
     {
         Once,
@@ -65,18 +65,19 @@ public class BaseCurveAnim : MonoBehaviour
         }
     }
 
-    public IEnumerator DelayBeforeAnim()
+    private IEnumerator DelayBeforeAnim()
     {
         yield return  new WaitForSecondsRealtime(DelaySeconds);
         KoefAnim = 1;
+
+        if (Mode != WrapMode.Once) yield break;
+        yield return  new WaitForSecondsRealtime(curveItem.keys[curveItem.keys.Length-1].time);
+        OnFinishedAnimation();
     }
 
-    public void OnFinishedAnimation()
+    private void OnFinishedAnimation()
     {
-        if (Mode == WrapMode.Once)
-        {
-            eventOnFinished.Invoke();
-        }
+        eventOnFinished.Invoke();
     }
 
     public void Update()
@@ -88,4 +89,5 @@ public class BaseCurveAnim : MonoBehaviour
     {
         GraphValue = curveItem.Evaluate((1/Duration)*Time.time*KoefAnim);
     }
+    
 }
