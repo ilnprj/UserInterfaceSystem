@@ -1,6 +1,9 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
 
+/// <summary>
+/// Модуль позволяющий выполнять Drag Drop элемента.
+/// </summary>
 public class DragDropItem : EventTrigger
 {
     private const float MIN_TIME_TO_DRAG = 1.0f;

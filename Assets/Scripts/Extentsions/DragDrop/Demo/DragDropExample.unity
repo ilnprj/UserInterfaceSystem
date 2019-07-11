@@ -182,7 +182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Drag me!
+  m_Text: HOLD AND DRAG ME!
 --- !u!222 &3337134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -691,6 +691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 686029084}
   - component: {fileID: 686029085}
+  - component: {fileID: 686029086}
   m_Layer: 5
   m_Name: Slots
   m_TagString: Untagged
@@ -742,6 +743,19 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &686029086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686029083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8f8ed54c8ddc840ae5ea1e6d478807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RectTransform: {fileID: 0}
 --- !u!1 &909998874
 GameObject:
   m_ObjectHideFlags: 0
