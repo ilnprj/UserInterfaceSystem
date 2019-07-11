@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class DropToSlotLerp : EventTrigger
 {
+    private const float MIN_DISTANCE_LERP = 250.0f;
     private RectTransform target;
     private RectTransform rectTransform;
     private List<RectSlot> _allSlots = new List<RectSlot>(); 
@@ -60,12 +61,12 @@ public class DropToSlotLerp : EventTrigger
     private RectTransform GetNearestRectTransform()
     {
         var nearestRect = rectTransform;
-        float nearestDist = 250;
+        var nearestDist = MIN_DISTANCE_LERP*MIN_DISTANCE_LERP;
         float curDist;
         
         foreach (var item in  _allSlots)
         {
-            curDist = Vector3.Distance(rectTransform.position, item.RectTransform.position);
+            curDist = Vector3.SqrMagnitude(rectTransform.position - item.RectTransform.position);
             if (!(curDist < nearestDist)) continue;
             nearestDist = curDist;
             nearestRect = item.RectTransform;

@@ -6,11 +6,12 @@ using UnityEngine;
 /// </summary>
 public class SlotsContainer : MonoBehaviour
 {
+    [Header("Current Slots in Scene:")]
     public List<RectSlot> RectSlots = new List<RectSlot>();
 
     private void Awake()
     {
-        //FIXME: Данное решение не подходит для случая если на сцене есть отключенные слоты. 
+        //FIXME: Данное решение не подходит если на сцене есть отключенные слоты в других окнах Canvas. 
         var SlotsInScene = FindObjectsOfType<RectSlot>();
         
         foreach (var item in SlotsInScene)
