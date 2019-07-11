@@ -11,7 +11,6 @@ public class SlotsContainer : MonoBehaviour
 
     private void Awake()
     {
-        //FIXME: Данное решение не подходит если на сцене есть отключенные слоты в других окнах Canvas. 
         var SlotsInScene = FindObjectsOfType<RectSlot>();
         
         foreach (var item in SlotsInScene)

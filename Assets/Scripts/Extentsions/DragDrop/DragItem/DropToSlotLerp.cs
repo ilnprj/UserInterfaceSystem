@@ -67,7 +67,10 @@ public class DropToSlotLerp : EventTrigger
         
         foreach (var item in  _allSlots)
         {
+            //Нам не нужно учитывать выключенные элементы
+            if (!item.gameObject.activeSelf) continue;
             curDist = Vector3.SqrMagnitude(rectTransform.position - item.RectTransform.position);
+            //Не учитываем элементы которые находятся дальше чем остальные либо за пределами зоны сброса в слот.
             if (!(curDist < nearestDist)) continue;
             nearestDist = curDist;
             nearestRect = item.RectTransform;
