@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a54b744a76f8f864da4ab56e9320db7b, type: 3}
-  m_Name: SoundSettings
+  m_Name: SoundsSettings
   m_EditorClassIdentifier: 
   window: {fileID: 5614241094604844680, guid: ed04221cc192a0348b56ca823f7ec910, type: 3}
   id: SoundsSettings

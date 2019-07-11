@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Класс, управляющий спауном нужных окон
@@ -16,8 +17,6 @@ public class WindowAgregator : MonoBehaviour
     public Canvas Canvas;
     [Header("Стартовое окно интерфейса:")] 
     public WindowAsset StartWindow;
-    [Header("Окна выгружаемые в сцену:")]
-    public List<WindowAsset> WindowForScene = new List<WindowAsset>();
     [Header("Активные окна:")]
     public List<Window> WindowsInHistory = new List<Window>();
 
@@ -62,7 +61,7 @@ public class WindowAgregator : MonoBehaviour
         {
             var startWindow = StartWindow.Window;
             startWindow = Instantiate(startWindow, Canvas.transform);
-            startWindow.name = StartWindow.Id;
+            startWindow.name = StartWindow.name;
             WindowsInHistory.Add(startWindow);
         }
         catch (Exception e)
@@ -81,7 +80,7 @@ public class WindowAgregator : MonoBehaviour
         //Если элемента нет в пуле и нет в активной истории окон то спауним.
         if (!HasWindowExist(idWindow))
         {
-            var spawnWindow = WindowForScene.SingleOrDefault(obj => obj.Id == idWindow);
+            var spawnWindow = Resources.Load<WindowAsset>("WindowAssets/"+SceneManager.GetActiveScene().name+"/"+idWindow);
             newWindow = Instantiate(spawnWindow.Window, Canvas.transform);
             newWindow.name = spawnWindow.name;
         }

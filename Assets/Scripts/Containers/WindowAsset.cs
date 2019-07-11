@@ -5,16 +5,9 @@ public class WindowAsset : ScriptableObject
 {
     [SerializeField] 
     private Window window;
-    [SerializeField]
-    private string id;
 
     public Window Window
     {
         get => window;
-    }
-
-    public string Id
-    {
-        get => id;
     }
 }
