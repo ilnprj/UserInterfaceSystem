@@ -42,7 +42,6 @@ public class DropToSlotLerp : EventTrigger
     private IEnumerator LerpToTarget()
     {
         _lerping = true;
-        rectTransform.SetParent(target);
         float elapsedTime = 0;
         while (elapsedTime < 1.0f && _lerping)
         {
@@ -50,6 +49,7 @@ public class DropToSlotLerp : EventTrigger
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        rectTransform.SetParent(target);
     }
 
     private void StopLerp()
