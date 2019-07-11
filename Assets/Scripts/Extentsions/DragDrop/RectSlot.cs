@@ -1,5 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+
+/// <summary>
+/// Item слота, необходим для того чтобы SlotsContainer собрал все слоты на сцене.
+/// </summary>
 public class RectSlot : MonoBehaviour
 {
     [HideInInspector]

@@ -10,9 +10,9 @@ public class DropToSlotLerp : EventTrigger
 {
     private RectTransform target;
     private RectTransform rectTransform;
-    
     private List<RectSlot> _allSlots = new List<RectSlot>(); 
     private bool _lerping;
+    
     private void Start()
     {
         _allSlots = FindObjectOfType<SlotsContainer>().RectSlots;
@@ -31,7 +31,8 @@ public class DropToSlotLerp : EventTrigger
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        if (Vector3.Distance(rectTransform.position, target.position) < 200.0f)
+        target = GetNearestRectTransform();
+        if (target!=rectTransform)
         {
             StartCoroutine(LerpToTarget());
         }
@@ -54,5 +55,21 @@ public class DropToSlotLerp : EventTrigger
     {
         _lerping = false;
         StopCoroutine(LerpToTarget());
+    }
+
+    private RectTransform GetNearestRectTransform()
+    {
+        var nearestRect = rectTransform;
+        float nearestDist = 250;
+        float curDist;
+        
+        foreach (var item in  _allSlots)
+        {
+            curDist = Vector3.Distance(rectTransform.position, item.RectTransform.position);
+            if (!(curDist < nearestDist)) continue;
+            nearestDist = curDist;
+            nearestRect = item.RectTransform;
+        }
+        return nearestRect;
     }
 }
