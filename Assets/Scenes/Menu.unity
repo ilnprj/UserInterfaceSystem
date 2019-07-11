@@ -292,9 +292,10 @@ MonoBehaviour:
   Canvas: {fileID: 6750123606199718461, guid: ad92b9847accdf047ae049791bdbc930, type: 3}
   StartWindow: {fileID: 11400000, guid: 7f5cb56ebacf0ee4ea1ef900cdea5152, type: 2}
   WindowForScene:
+  - {fileID: 11400000, guid: c5f3d2a7faa4f104e8fc81cb892e5d8e, type: 2}
+  - {fileID: 11400000, guid: 7f5cb56ebacf0ee4ea1ef900cdea5152, type: 2}
   - {fileID: 11400000, guid: 1952af6a92e68e6488eb9a40cb333ef0, type: 2}
   - {fileID: 11400000, guid: bf23f87b7bd4c9d4fa630ce062875d09, type: 2}
-  - {fileID: 11400000, guid: c5f3d2a7faa4f104e8fc81cb892e5d8e, type: 2}
   WindowsInHistory: []
   WindowsPool: []
 --- !u!4 &1228515654
