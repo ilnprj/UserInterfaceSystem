@@ -2,7 +2,7 @@
 /// Кнопка перехода
 /// </summary>
 
-public class ButtonTransition : ButtonSetter
+public class ButtonTransition : ButtonBaseBehaviour
 {
     [UnityEngine.Header("id окна которое нужно вызвать:")]
     public string id;

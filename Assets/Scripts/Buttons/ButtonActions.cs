@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-public class ButtonActions : ButtonSetter
+public class ButtonActions : ButtonBaseBehaviour
 {
     public UnityEvent Events;
    
