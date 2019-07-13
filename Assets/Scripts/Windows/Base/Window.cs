@@ -10,6 +10,7 @@ public class Window : MonoBehaviour, IWindow
     /// Если по обновлению окна, нужно обновить элементы, мы подписываемся на данный Handler
     /// </summary>
     public Action RefreshWindowHandler = delegate { };
+    [HideInInspector]
     public bool Focus;
 
     private IAnimationWindow animation;
