@@ -2,26 +2,33 @@
 using UnityEngine;
 using System;
 using System.Linq;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Класс, управляющий спауном нужных окон
 /// </summary>
 public class WindowAgregator : MonoBehaviour
 {
+    public enum TypeLoad
+    {
+        ResourceLoad,
+        InspectorLoad
+    }
+
+    public TypeLoad StateLoad;
+
     public static Action<string> SetWindowHandler = delegate { };
     public static Action<Window> AddWindowHandler = delegate { };
     public static Action<Window> RemoveWindowHandler = delegate { };
 
     [Header("Предварительно настроенный Canvas:")]
     public Canvas Canvas;
-    [Header("Стартовое окно интерфейса:")] 
-    public WindowAsset StartWindow;
-    [Header("Активные окна:")]
-    public List<Window> WindowsInHistory = new List<Window>();
 
-    [Header("Окна в пуле:")]
-    public List<Window> WindowsPool = new List<Window>();
+    [Header("Стартовое окно интерфейса:")] public WindowAsset StartWindow;
+    [Header("Активные окна:")] public List<Window> WindowsInHistory = new List<Window>();
+
+    [Header("Окна в пуле:")] public List<Window> WindowsPool = new List<Window>();
+
+    private ILoadableWindow _loadManager;
 
     private void OnEnable()
     {
@@ -33,14 +40,45 @@ public class WindowAgregator : MonoBehaviour
     private void Awake()
     {
         CreateInterface();
+        selectLoadType();
+    }
+
+    private void selectLoadType()
+    {
+        switch (StateLoad)
+        {
+            case TypeLoad.InspectorLoad:
+            {
+                _loadManager = gameObject.GetComponent<LoadWindowInspector>();
+                if (_loadManager == null)
+                {
+                    Debug.LogError(
+                        "Добавьте компонент LoadWindowInspector и занесите в него нужные Ассеты окон для сцены!");
+                }
+
+                break;
+            }
+
+            case TypeLoad.ResourceLoad:
+            {
+                _loadManager = gameObject.AddComponent<LoadWindowResource>();
+                break;
+            }
+
+            default:
+            {
+                _loadManager = gameObject.AddComponent<LoadWindowResource>();
+                break;
+            }
+        }
     }
 
 #if UNITY_STANDALONE
     private void Update()
     {
         if (!Input.GetKeyDown(KeyCode.Escape)) return;
-        if (WindowsInHistory.Count>1)
-            WindowsInHistory[WindowsInHistory.Count-1].OnClose();
+        if (WindowsInHistory.Count > 1)
+            WindowsInHistory[WindowsInHistory.Count - 1].OnClose();
     }
 #endif
 
@@ -80,7 +118,7 @@ public class WindowAgregator : MonoBehaviour
         //Если элемента нет в пуле и нет в активной истории окон то спауним.
         if (!HasWindowExist(idWindow))
         {
-            var spawnWindow = Resources.Load<WindowAsset>("WindowAssets/"+SceneManager.GetActiveScene().name+"/"+idWindow);
+            var spawnWindow = _loadManager.GetWindowAsset(idWindow);
             newWindow = Instantiate(spawnWindow.Window, Canvas.transform);
             newWindow.name = spawnWindow.name;
         }
@@ -104,7 +142,7 @@ public class WindowAgregator : MonoBehaviour
         window.gameObject.SetActive(false);
         WindowsInHistory.Remove(window);
         //Если предыдущее окно по правилам было выключено, мы включаем его (возвращаясь назад по истории окон).
-        WindowsInHistory[WindowsInHistory.Count-1].gameObject.SetActive(true);
+        WindowsInHistory[WindowsInHistory.Count - 1].gameObject.SetActive(true);
         //Активируем фокус окна обратно, позволяя ему ряд обозначенных действий
         WindowsInHistory[WindowsInHistory.Count - 1].Focus = true;
         WindowsPool.Add(window);
@@ -117,6 +155,7 @@ public class WindowAgregator : MonoBehaviour
 
     private bool HasWindowExist(string idWindow)
     {
-        return WindowsInHistory.SingleOrDefault(obj => obj.name == idWindow) || WindowsPool.SingleOrDefault(obj => obj.name == idWindow);
+        return WindowsInHistory.SingleOrDefault(obj => obj.name == idWindow) ||
+               WindowsPool.SingleOrDefault(obj => obj.name == idWindow);
     }
 }
