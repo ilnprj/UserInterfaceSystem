@@ -1,7 +1,10 @@
-﻿using System;
-
-public interface IAnimationWindow
+﻿namespace UIS
 {
-    void OnOpenWindowAnim();
-    void OnCloseWinodwAnim(Action closeHandler);
+    using System;
+
+    public interface IAnimationWindow
+    {
+        void OnOpenWindowAnim();
+        void OnCloseWinodwAnim(Action closeHandler);
+    }
 }

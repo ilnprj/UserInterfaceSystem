@@ -1,53 +1,53 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-
-/// <summary>
-/// Swipe Image Controller with custom Unity Events
-/// </summary>
-public class SwipeImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+﻿namespace UIS.Extensions.Swipe
 {
-    private Vector2 Start, End;
-    public UnityEvent eventHorizontal = new UnityEvent();
-    public UnityEvent eventVertical = new UnityEvent();
-    private const int LENGHT_SWIPE = 100;
+    using UnityEngine;
+    using UnityEngine.Events;
+    using UnityEngine.EventSystems;
 
-    public void OnPointerDown(PointerEventData eventData)
+    /// <summary>
+    /// Swipe Image Controller with custom Unity Events
+    /// </summary>
+    public class SwipeImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        Start = eventData.position;
-    }
+        private Vector2 Start, End;
+        public UnityEvent eventHorizontal = new UnityEvent();
+        public UnityEvent eventVertical = new UnityEvent();
+        private const int LENGHT_SWIPE = 100;
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        End = eventData.position;
-        SetSwipe(Start, End);
-    }
-
-    private void SetSwipe(Vector2 aPoint, Vector2 bPoint)
-    {
-        Vector2 res = aPoint - bPoint;
-
-        if (res.x > LENGHT_SWIPE)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            eventHorizontal.Invoke();
-            Debug.Log("RIGHT");
-        }
-        if (res.x < -LENGHT_SWIPE)
-        {
-            eventHorizontal.Invoke();
-            Debug.Log("LEFT");
+            Start = eventData.position;
         }
 
-        if (res.y > LENGHT_SWIPE)
+        public void OnPointerUp(PointerEventData eventData)
         {
-            eventVertical.Invoke();
-            Debug.Log("UP");
+            End = eventData.position;
+            SetSwipe(Start, End);
         }
 
-        if (res.y < -LENGHT_SWIPE)
+        private void SetSwipe(Vector2 aPoint, Vector2 bPoint)
         {
-            eventVertical.Invoke();
-            Debug.Log("DOWN");
+            Vector2 res = aPoint - bPoint;
+
+            if (res.x > LENGHT_SWIPE)
+            {
+                eventHorizontal.Invoke();
+            }
+            if (res.x < -LENGHT_SWIPE)
+            {
+                eventHorizontal.Invoke();
+            }
+
+            if (res.y > LENGHT_SWIPE)
+            {
+                eventVertical.Invoke();
+            }
+
+            if (res.y < -LENGHT_SWIPE)
+            {
+                eventVertical.Invoke();
+            }
         }
     }
 }
+

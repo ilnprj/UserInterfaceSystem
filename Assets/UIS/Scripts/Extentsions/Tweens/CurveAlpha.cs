@@ -1,30 +1,34 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-public class CurveAlpha : BaseCurveAnim
+﻿namespace UIS.Extensions.Animations
 {
-    public float From;
-    public float To = 1.0f;
-    private Image image;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-    private void Awake()
+    public class CurveAlpha : BaseCurveAnim
     {
-        image = GetComponent<Image>();
-        if (!image)
+        public float From;
+        public float To = 1.0f;
+        private Image image;
+
+        private void Awake()
         {
-            Destroy(this);
+            image = GetComponent<Image>();
+            if (!image)
+            {
+                Destroy(this);
+            }
+        }
+
+        public void FixedUpdate()
+        {
+            Calculate();
+        }
+
+        public void Calculate()
+        {
+            var color = image.color;
+            color.a = Mathf.Lerp(From, To, GraphValue);
+            image.color = color;
         }
     }
 
-    public void FixedUpdate()
-    {
-        Calculate();
-    }
-    
-    public void Calculate()
-    {
-        var color = image.color;
-        color.a =  Mathf.Lerp(From, To, GraphValue);
-        image.color = color;
-    }
 }

@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-
-public class CurveTransform : BaseCurveAnim
+﻿namespace UIS.Extensions.Animations
 {
-    public Transform From;
-    public Transform To;
+    using UnityEngine;
 
-    public void FixedUpdate()
+    public class CurveTransform : BaseCurveAnim
     {
-        Calculate();
-    }
+        public Transform From;
+        public Transform To;
 
-    private void Calculate()
-    {
-        transform.localPosition = Vector3.Lerp(From.localPosition, To.localPosition, GraphValue);
-        transform.localScale = Vector3.Lerp(From.localScale, To.localScale, GraphValue);
-        transform.rotation = Quaternion.Slerp(From.rotation, To.rotation, GraphValue);
+        public void FixedUpdate()
+        {
+            Calculate();
+        }
+
+        private void Calculate()
+        {
+            transform.localPosition = Vector3.Lerp(From.localPosition, To.localPosition, GraphValue);
+            transform.localScale = Vector3.Lerp(From.localScale, To.localScale, GraphValue);
+            transform.rotation = Quaternion.Slerp(From.rotation, To.rotation, GraphValue);
+        }
     }
 }

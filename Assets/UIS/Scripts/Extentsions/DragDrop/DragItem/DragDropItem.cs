@@ -1,39 +1,39 @@
-﻿using UnityEngine.EventSystems;
-using UnityEngine;
-
-/// <summary>
-/// Модуль позволяющий выполнять Drag Drop элемента.
-/// </summary>
-public class DragDropItem : EventTrigger
+﻿namespace UIS.Extensions.DragDrop
 {
-    private const float MIN_TIME_TO_DRAG = 1.0f;
-    private float timeHold;
-    private bool pressed;
-    
-    public override void OnPointerDown(PointerEventData eventData)
-    {
-        pressed = true;
-    }
+    using UnityEngine.EventSystems;
+    using UnityEngine;
 
-    private void Update()
+    public class DragDropItem : EventTrigger
     {
-        if (pressed)
+        private const float MIN_TIME_TO_DRAG = 1.0f;
+        private float timeHold;
+        private bool pressed;
+
+        public override void OnPointerDown(PointerEventData eventData)
         {
-            timeHold += Time.unscaledDeltaTime;    
+            pressed = true;
         }
-    }
 
-    public override void OnDrag(PointerEventData eventData)
-    {
-        if (timeHold >= MIN_TIME_TO_DRAG)
+        private void Update()
         {
-            transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            if (pressed)
+            {
+                timeHold += Time.unscaledDeltaTime;
+            }
         }
-    }
 
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-        pressed = false;
-        timeHold = 0f;
+        public override void OnDrag(PointerEventData eventData)
+        {
+            if (timeHold >= MIN_TIME_TO_DRAG)
+            {
+                transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            }
+        }
+
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            pressed = false;
+            timeHold = 0f;
+        }
     }
 }

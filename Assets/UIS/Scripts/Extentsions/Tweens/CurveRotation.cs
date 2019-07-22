@@ -1,17 +1,21 @@
-﻿using UnityEngine;
-
-public class CurveRotation : BaseCurveAnim
+﻿namespace UIS.Extensions.Animations
 {
-    public Vector3 From;
-    public Vector3 To;
-    
-    public void FixedUpdate()
+    using UnityEngine;
+
+    public class CurveRotation : BaseCurveAnim
     {
-        Calculate();
+        public Vector3 From;
+        public Vector3 To;
+
+        public void FixedUpdate()
+        {
+            Calculate();
+        }
+
+        private void Calculate()
+        {
+            transform.rotation = Quaternion.Slerp(Quaternion.Euler(From), Quaternion.Euler(To), GraphValue);
+        }
     }
 
-    private void Calculate()
-    {
-        transform.rotation = Quaternion.Slerp(Quaternion.Euler(From), Quaternion.Euler(To), GraphValue);
-    }
 }

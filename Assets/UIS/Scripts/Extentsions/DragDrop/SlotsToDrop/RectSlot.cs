@@ -1,15 +1,19 @@
-﻿using UnityEngine;
-
-/// <summary>
-/// Item слота, необходим для того чтобы SlotsContainer собрал все слоты на сцене.
-/// </summary>
-public class RectSlot : MonoBehaviour
+﻿namespace UIS.Extensions.DragDrop
 {
-    [HideInInspector]
-    public RectTransform RectTransform;
+    using UnityEngine;
 
-    private void Awake()
+    /// <summary>
+    /// Item слота, необходим для того чтобы SlotsContainer собрал все слоты на сцене.
+    /// </summary>
+    public class RectSlot : MonoBehaviour
     {
-        RectTransform = GetComponent<RectTransform>();
+        [HideInInspector]
+        public RectTransform RectTransform;
+
+        private void Awake()
+        {
+            RectTransform = GetComponent<RectTransform>();
+        }
     }
+
 }

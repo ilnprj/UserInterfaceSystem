@@ -1,21 +1,24 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// Контейнер, который хранит в себе все слоты на сцене.
-/// </summary>
-public class SlotsContainer : MonoBehaviour
+﻿namespace UIS.Extensions.DragDrop
 {
-    [Header("Current Slots in Scene:")]
-    public List<RectSlot> RectSlots = new List<RectSlot>();
+    using System.Collections.Generic;
+    using UnityEngine;
 
-    private void Awake()
+    /// <summary>
+    /// Контейнер, который хранит в себе все слоты на сцене.
+    /// </summary>
+    public class SlotsContainer : MonoBehaviour
     {
-        var SlotsInScene = FindObjectsOfType<RectSlot>();
-        
-        foreach (var item in SlotsInScene)
+        [Header("Current Slots in Scene:")]
+        public List<RectSlot> RectSlots = new List<RectSlot>();
+
+        private void Awake()
         {
-            RectSlots.Add(item);
+            var SlotsInScene = FindObjectsOfType<RectSlot>();
+
+            foreach (var item in SlotsInScene)
+            {
+                RectSlots.Add(item);
+            }
         }
     }
 }

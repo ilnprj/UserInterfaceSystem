@@ -1,80 +1,79 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
-using UnityEngine;
-using UnityEngine.EventSystems;
-
-/// <summary>
-/// Модуль, обеспечивающий авто привязку элемента в слот.
-/// </summary>
-public class DropToSlotLerp : EventTrigger
+﻿namespace UIS.Extensions.DragDrop
 {
-    private const float MIN_DISTANCE_LERP = 250.0f;
-    private RectTransform target;
-    private RectTransform rectTransform;
-    private List<RectSlot> _allSlots = new List<RectSlot>(); 
-    private bool _lerping;
-    
-    private void Start()
-    {
-        _allSlots = FindObjectOfType<SlotsContainer>().RectSlots;
-        rectTransform = GetComponent<RectTransform>();
-    }
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.EventSystems;
 
-    public override void OnPointerDown(PointerEventData eventData)
+    public class DropToSlotLerp : EventTrigger
     {
-        StopLerp();
-    }
+        private const float MIN_DISTANCE_LERP = 250.0f;
+        private RectTransform target;
+        private RectTransform rectTransform;
+        private List<RectSlot> _allSlots = new List<RectSlot>();
+        private bool _lerping;
 
-    public override void OnDrag(PointerEventData eventData)
-    {
-        StopLerp();
-    }
-
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-        target = GetNearestRectTransform();
-        if (target!=rectTransform)
+        private void Start()
         {
-            StartCoroutine(LerpToTarget());
+            _allSlots = FindObjectOfType<SlotsContainer>().RectSlots;
+            rectTransform = GetComponent<RectTransform>();
         }
-    }
 
-    private IEnumerator LerpToTarget()
-    {
-        _lerping = true;
-        float elapsedTime = 0;
-        while (elapsedTime < 1.0f && _lerping)
+        public override void OnPointerDown(PointerEventData eventData)
         {
-            rectTransform.position = Vector3.Lerp(rectTransform.position, target.position, elapsedTime / 1.0f);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            StopLerp();
         }
-        rectTransform.SetParent(target);
-    }
 
-    private void StopLerp()
-    {
-        _lerping = false;
-        StopCoroutine(LerpToTarget());
-    }
-
-    private RectTransform GetNearestRectTransform()
-    {
-        var nearestRect = rectTransform;
-        var nearestDist = MIN_DISTANCE_LERP*MIN_DISTANCE_LERP;
-        float curDist;
-        
-        foreach (var item in  _allSlots)
+        public override void OnDrag(PointerEventData eventData)
         {
-            //Нам не нужно учитывать выключенные элементы
-            if (!item.gameObject.activeSelf) continue;
-            curDist = Vector3.SqrMagnitude(rectTransform.position - item.RectTransform.position);
-            //Не учитываем элементы которые находятся дальше чем остальные либо за пределами зоны сброса в слот.
-            if (!(curDist < nearestDist)) continue;
-            nearestDist = curDist;
-            nearestRect = item.RectTransform;
+            StopLerp();
         }
-        return nearestRect;
+
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            target = GetNearestRectTransform();
+            if (target != rectTransform)
+            {
+                StartCoroutine(LerpToTarget());
+            }
+        }
+
+        private IEnumerator LerpToTarget()
+        {
+            _lerping = true;
+            float elapsedTime = 0;
+            while (elapsedTime < 1.0f && _lerping)
+            {
+                rectTransform.position = Vector3.Lerp(rectTransform.position, target.position, elapsedTime / 1.0f);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            rectTransform.SetParent(target);
+        }
+
+        private void StopLerp()
+        {
+            _lerping = false;
+            StopCoroutine(LerpToTarget());
+        }
+
+        private RectTransform GetNearestRectTransform()
+        {
+            var nearestRect = rectTransform;
+            var nearestDist = MIN_DISTANCE_LERP * MIN_DISTANCE_LERP;
+            float curDist;
+
+            foreach (var item in _allSlots)
+            {
+                //Нам не нужно учитывать выключенные элементы
+                if (!item.gameObject.activeSelf) continue;
+                curDist = Vector3.SqrMagnitude(rectTransform.position - item.RectTransform.position);
+                //Не учитываем элементы которые находятся дальше чем остальные либо за пределами зоны сброса в слот.
+                if (!(curDist < nearestDist)) continue;
+                nearestDist = curDist;
+                nearestRect = item.RectTransform;
+            }
+            return nearestRect;
+        }
     }
 }
