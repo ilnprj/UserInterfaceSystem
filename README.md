@@ -1,4 +1,4 @@
-#### Interface System
+#### UIS (User Interface System)
 ##### Plug-in to automate the transition between windows in the application. All that remains is to write the logic inside the interface windows themselves.
 
 ##### Features:
