@@ -14,12 +14,12 @@ public class CurveScale : BaseCurveAnim
         transform.localScale = From;
     }
 
-    public void CalculateCurve()
+    public new void CalculateCurve()
     {
         transform.localScale = To * GraphValue;
     }
 
-    public void Update()
+    public new void Update()
     {
         CalculateCurve();
     }
