@@ -1,4 +1,10 @@
-﻿namespace UIS.Extensions.DragDrop
+﻿// ----------------------------------------------------------------------------
+// The MIT License
+// UserInterfaceSystem https://gitlab.com/ilnprj/
+// Copyright (c) 2019 ilnprj <Grigoriy Fedorenko>
+// ----------------------------------------------------------------------------
+
+namespace UIS.Extensions.DragDrop
 {
     using UnityEngine;
 
