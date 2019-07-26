@@ -720,10 +720,12 @@ MonoBehaviour:
   TypePlayCurve: 2
   Duration: 3
   DelaySeconds: 0
+  KoefAnim: 0
   eventOnFinished:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  GraphValue: 0
   From: {x: 0, y: 0, z: 0}
   To: {x: 1, y: 1, z: 1}

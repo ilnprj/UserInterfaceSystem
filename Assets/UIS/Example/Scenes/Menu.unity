@@ -286,11 +286,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1228515652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94be244e28bb71649a97a7bdc6e4b2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: d1e7c0dd6ac65fb4da7f4fb82a5d9f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StateLoad: 0
-  Canvas: {fileID: 6750123606199718461, guid: ad92b9847accdf047ae049791bdbc930, type: 3}
+  Canvas: {fileID: 6750123606199718461, guid: f7fe59f8e50a5bd45a9ad0c17a7a91e3, type: 3}
   StartWindow: {fileID: 11400000, guid: 7f5cb56ebacf0ee4ea1ef900cdea5152, type: 2}
   WindowsInHistory: []
   WindowsPool: []
