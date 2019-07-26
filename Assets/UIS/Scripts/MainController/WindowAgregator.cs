@@ -1,4 +1,10 @@
-﻿namespace UIS
+﻿// ----------------------------------------------------------------------------
+// The MIT License
+// UserInterfaceSystem https://gitlab.com/ilnprj/
+// Copyright (c) 2019 ilnprj <Grigoriy Fedorenko>
+// ----------------------------------------------------------------------------
+
+namespace UIS
 {
     using System.Collections.Generic;
     using UnityEngine;
@@ -6,7 +12,7 @@
     using System.Linq;
 
     /// <summary>
-    /// Класс, управляющий спауном нужных окон
+    /// Main class container
     /// </summary>
     public class WindowAgregator : MonoBehaviour
     {
@@ -22,13 +28,13 @@
         public static Action<Window> AddWindowHandler = delegate { };
         public static Action<Window> RemoveWindowHandler = delegate { };
 
-        [Header("Предварительно настроенный Canvas:")]
+        [Header("Canvas:")]
         public Canvas Canvas;
 
         [Header("Стартовое окно интерфейса:")] public WindowAsset StartWindow;
-        [Header("Активные окна:")] public List<Window> WindowsInHistory = new List<Window>();
+        [Header("Active windows:")] public List<Window> WindowsInHistory = new List<Window>();
 
-        [Header("Окна в пуле:")] public List<Window> WindowsPool = new List<Window>();
+        [Header("Windows in pool:")] public List<Window> WindowsPool = new List<Window>();
 
         private ILoadableWindow _loadManager;
 
@@ -42,10 +48,10 @@
         private void Awake()
         {
             CreateInterface();
-            selectLoadType();
+            SelectLoadType();
         }
 
-        private void selectLoadType()
+        private void SelectLoadType()
         {
             switch (StateLoad)
             {
@@ -55,7 +61,7 @@
                         if (_loadManager == null)
                         {
                             Debug.LogError(
-                                "Добавьте компонент LoadWindowInspector и занесите в него нужные Ассеты окон для сцены!");
+                                "Add component LoadWindowInspector or sets your assets windows for this scene!");
                         }
 
                         break;
@@ -92,7 +98,7 @@
         }
 
         /// <summary>
-        /// Загружаем canvas при старте сцены.
+        /// Load custom canvas then scene starts
         /// </summary>
         private void CreateInterface()
         {
@@ -112,12 +118,12 @@
         }
 
         /// <summary>
-        /// Выгружаем из памяти нужное окно и определяем надо ли выключить предыдущее окно
+        /// Unload the necessary window from memory and determine whether the previous window should be turned off.
         /// </summary>
         private void OnSetWindowHanlder(string idWindow)
         {
             var newWindow = SearchWindowInPool(idWindow);
-            //Если элемента нет в пуле и нет в активной истории окон то спауним.
+            //If the item is not in the pool and not in the active window history, then spawn.
             if (!HasWindowExist(idWindow))
             {
                 var spawnWindow = _loadManager.GetWindowAsset(idWindow);
@@ -139,13 +145,13 @@
 
         private void OnRemovingWindowHandler(Window window)
         {
-            //Мы не можем удалить самое первое окно интерфейса.
+            //We cannot delete the very first interface window.
             if (WindowsInHistory.Count <= 1) return;
             window.gameObject.SetActive(false);
             WindowsInHistory.Remove(window);
-            //Если предыдущее окно по правилам было выключено, мы включаем его (возвращаясь назад по истории окон).
+            //If the previous window was turned off by the rules, we turn it on (going back through the window history).
             WindowsInHistory[WindowsInHistory.Count - 1].gameObject.SetActive(true);
-            //Активируем фокус окна обратно, позволяя ему ряд обозначенных действий
+            //Activate the focus of the window back, allowing it a series of indicated actions.
             WindowsInHistory[WindowsInHistory.Count - 1].Focus = true;
             WindowsPool.Add(window);
         }

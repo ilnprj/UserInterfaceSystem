@@ -1,11 +1,17 @@
-﻿namespace UIS.Extensions.DragDrop
+﻿// ----------------------------------------------------------------------------
+// The MIT License
+// UserInterfaceSystem https://gitlab.com/ilnprj/
+// Copyright (c) 2019 ilnprj <Grigoriy Fedorenko>
+// ----------------------------------------------------------------------------
+
+namespace UIS.Extensions.DragDrop
 {
     using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>
-    /// Контейнер, который хранит в себе все слоты на сцене.
-    /// </summary>
+    /// A container that holds all the slots on the stage.
+    /// /// </summary>
     public class SlotsContainer : MonoBehaviour
     {
         [Header("Current Slots in Scene:")]

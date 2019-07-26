@@ -1,4 +1,10 @@
-﻿namespace UIS.Extensions.Animations
+﻿// ----------------------------------------------------------------------------
+// The MIT License
+// UserInterfaceSystem https://gitlab.com/ilnprj/
+// Copyright (c) 2019 ilnprj <Grigoriy Fedorenko>
+// ----------------------------------------------------------------------------
+
+namespace UIS.Extensions.Animations
 {
     using System.Collections;
     using UnityEngine;

@@ -1,7 +1,13 @@
-﻿namespace UIS
+﻿// ----------------------------------------------------------------------------
+// The MIT License
+// UserInterfaceSystem https://gitlab.com/ilnprj/
+// Copyright (c) 2019 ilnprj <Grigoriy Fedorenko>
+// ----------------------------------------------------------------------------
+
+namespace UIS
 {
     /// <summary>
-    /// Кнопка перехода
+    /// Button transition to another window
     /// </summary>
 
     public class ButtonTransition : ButtonBaseBehaviour

@@ -1,4 +1,10 @@
-﻿namespace UIS.Extensions.Animations
+﻿// ----------------------------------------------------------------------------
+// The MIT License
+// UserInterfaceSystem https://gitlab.com/ilnprj/
+// Copyright (c) 2019 ilnprj <Grigoriy Fedorenko>
+// ----------------------------------------------------------------------------
+
+namespace UIS.Extensions.Animations
 {
     using UnityEngine;
 
@@ -17,5 +23,4 @@
             transform.rotation = Quaternion.Slerp(Quaternion.Euler(From), Quaternion.Euler(To), GraphValue);
         }
     }
-
 }
