@@ -12,7 +12,7 @@ namespace UIS
     public class WindowAsset : ScriptableObject
     {
         [SerializeField]
-        private Window window;
+        private Window window = default;
 
         public Window Window => window;
     }

@@ -1,6 +1,6 @@
 #### UIS (User Interface System)
-##### Plugin to automate the transition between windows in the application. All that remains is to write the logic inside the interface windows themselves.
-[Download Last Version UnityPackage](https://github.com/ilnprj/UserInterfaceSystem/blob/release/UIS_v1.0.2.unitypackage)
+##### Plug-in to automate the transition between windows in the application. All that remains is to write the logic inside the interface windows themselves.
+[Download Last Version UnityPackage](https://gitlab.com/ilnprj/interfacesystem/blob/release/UIS_v1.1.0.unitypackage)
 
 ##### Features:
 - **WindowAgregator**:
@@ -12,6 +12,9 @@
   - Sends id the desired window to the WindowAgregator.
 - **Close**:
   - Automaticly add event "Close Window" to parent Window Button.
+- **PanelsWindow**:
+  - Modular extension for the Window component. You can enter the prefab of the panel or any other interface object in it. 
+  - The general idea is that elements that are repeated in windows can be stored in a pool and transferred from one window to another.
 
 ##### Extensions:
 - **Drag'n'Drop Module**:

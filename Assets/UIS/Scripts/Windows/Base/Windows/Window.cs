@@ -14,19 +14,27 @@ namespace UIS
     /// </summary>
     public class Window : MonoBehaviour, IWindow
     {
-        /// <summary>
-        /// Если по обновлению окна, нужно обновить элементы, мы подписываемся на данный Handler
-        /// </summary>
         public Action RefreshWindowHandler = delegate { };
-        [HideInInspector]
-        public bool Focus;
+        public Action <bool> ChangeFocusHandler = delegate { };
+        private bool focus;
+
+        public bool Focus
+        {
+            get
+            {
+                return focus;
+            }
+
+            set
+            {
+                focus = value;
+                ChangeFocusHandler?.Invoke(value);
+            }
+        }
 
         private new IAnimationWindow animation;
         private Action handlerClose = delegate { };
 
-        /// <summary>
-        /// Что делаем при открытии окна
-        /// </summary>
         public virtual void OnEnable()
         {
             OnOpen();
@@ -45,11 +53,11 @@ namespace UIS
 
         public virtual void OnRefresh()
         {
-            RefreshWindowHandler.Invoke();
+            RefreshWindowHandler?.Invoke();
         }
 
         /// <summary>
-        /// По открытию окна заносим его в лист агрегатора окон.
+        /// On Window open, add him to list in WindowAgregator
         /// </summary>
         public void OnOpen()
         {
@@ -58,7 +66,7 @@ namespace UIS
         }
 
         /// <summary>
-        /// Закрытие окна. Вызывается по кнопке ButtonClose либо по клавише.
+        /// Close Window Method. Call on button "ButtonClose" or on Escape button
         /// </summary>
         public void OnClose()
         {

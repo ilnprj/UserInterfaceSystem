@@ -28,6 +28,7 @@ namespace UIS
         public static Action<Window> AddWindowHandler = delegate { };
         public static Action<Window> RemoveWindowHandler = delegate { };
 
+
         [Header("Canvas:")]
         public Canvas Canvas;
 
@@ -81,14 +82,13 @@ namespace UIS
             }
         }
 
-#if UNITY_STANDALONE
         private void Update()
         {
-            if (!Input.GetKeyDown(KeyCode.Escape)) return;
-            if (WindowsInHistory.Count > 1)
+            if (Input.GetKeyDown(KeyCode.Escape) && WindowsInHistory.Count > 1)
+            {
                 WindowsInHistory[WindowsInHistory.Count - 1].OnClose();
+            }
         }
-#endif
 
         private void OnDisable()
         {
@@ -112,7 +112,7 @@ namespace UIS
             }
             catch (Exception e)
             {
-                Debug.LogError("Не найден объект стартовой точки для данной сцены.");
+                Debug.LogError("Not found start asset window.");
                 Debug.LogError(e.Message);
             }
         }
