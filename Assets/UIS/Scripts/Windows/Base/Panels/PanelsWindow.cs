@@ -13,6 +13,8 @@
 
         private PanelsAgregator _panelsAgregator;
         private Window _window;
+
+        private ButtonBaseBehaviour[] buttonsInPanel;
         private void Awake()
         {
             try
@@ -78,6 +80,7 @@
             }
             internalPool.Add(res);
             SetObjectInView(res);
+            InitWindowInButtons(res);
         }
 
         private void SetObjectInView(GameObject item)
@@ -90,7 +93,15 @@
         private void BackToPool(GameObject item)
         {
             _panelsAgregator.PanelsPool.Add(item);
-            item.SetActive(false);
+            //item.SetActive(false);
+        }
+
+        private void InitWindowInButtons(GameObject panelItem)
+        {
+            buttonsInPanel = panelItem.GetComponentsInChildren<ButtonBaseBehaviour>();
+
+            foreach (var item in buttonsInPanel)
+                item.window = _window;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace UIS
     using UnityEngine;
     using UnityEngine.UI;
     
+    [RequireComponent(typeof(Button))]
     public abstract class ButtonBaseBehaviour : MonoBehaviour
     {
         [HideInInspector]
