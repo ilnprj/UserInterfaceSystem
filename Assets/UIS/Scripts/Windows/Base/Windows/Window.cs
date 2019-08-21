@@ -14,6 +14,8 @@ namespace UIS
     /// </summary>
     public class Window : MonoBehaviour, IWindow
     {
+        [HideInInspector]
+        public string IdWindow;
         public Action RefreshWindowHandler = delegate { };
         public Action <bool> ChangeFocusHandler = delegate { };
         private bool focus;
@@ -63,6 +65,7 @@ namespace UIS
         {
             WindowAgregator.AddWindowHandler(this);
             Focus = true;
+            transform.SetAsLastSibling();
         }
 
         /// <summary>
