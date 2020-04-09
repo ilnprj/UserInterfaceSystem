@@ -81,14 +81,6 @@ public class WindowAgregator : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && WindowsInHistory.Count > 1)
-        {
-            WindowsInHistory[WindowsInHistory.Count - 1].OnClose();
-        }
-    }
-
     private void OnDisable()
     {
         SetWindowHandler -= OnSetWindowHanlder;
@@ -130,7 +122,6 @@ public class WindowAgregator : MonoBehaviour
             {
                 newWindow = Instantiate(spawnWindow.Window, Canvas.transform);
                 newWindow.IdWindow = idWindow;
-                newWindow.name = spawnWindow.name;
             }
                 
             else
@@ -167,12 +158,12 @@ public class WindowAgregator : MonoBehaviour
 
     private Window SearchWindowInPool(string idWindow)
     {
-        return WindowsPool.SingleOrDefault(obj => obj.name == idWindow);
+        return WindowsPool.SingleOrDefault(obj => obj.IdWindow == idWindow);
     }
 
     private bool HasWindowExist(string idWindow)
     {
-        return WindowsInHistory.SingleOrDefault(obj => obj.name == idWindow) ||
-               WindowsPool.SingleOrDefault(obj => obj.name == idWindow);
+        return WindowsInHistory.SingleOrDefault(obj => obj.IdWindow == idWindow) ||
+               WindowsPool.SingleOrDefault(obj => obj.IdWindow == idWindow);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using UIS;
 public class SettingsWindow : Window
 {
-    //В каждом классе, наследуемом от окна - достаточно написать его собственную логику.
-    //Логику по открытию, закрытию окна и переходам в другие окна делать не нужно, это реализовано в Base.
+    //in any window class, we can implement the "internal" logic in a modular principle. Each class automatically ties transitions and initalize.
 }

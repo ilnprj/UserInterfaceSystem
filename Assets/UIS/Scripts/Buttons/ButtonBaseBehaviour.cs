@@ -19,7 +19,7 @@ namespace UIS
         [HideInInspector]
         public Window window;
 
-        public virtual void Awake()
+        protected virtual void Awake()
         {
             button = GetComponent<Button>();
             window = GetComponentInParent<Window>();
@@ -29,11 +29,11 @@ namespace UIS
             }
         }
 
-        public virtual void Start() => button.onClick.AddListener(delegate { Action(); });
+        protected virtual void Start() => button.onClick.AddListener(delegate { Action(); });
 
-        public virtual void Action()
-        {
-
-        }
+        /// <summary>
+        /// Action on button. Need to be implement
+        /// </summary>
+        protected abstract void Action();
     }
 }

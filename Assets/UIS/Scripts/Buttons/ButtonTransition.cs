@@ -17,7 +17,7 @@ namespace UIS
         [UnityEngine.Header("Нужно ли закрывать текущее окно по переходу:")]
         public bool needClose;
 
-        public override void Action()
+        protected override void Action()
         {
             if (window.Focus)
             {
@@ -25,7 +25,6 @@ namespace UIS
                 window.Focus = false;
                 WindowAgregator.SetWindowHandler(id);
             }
-
         }
     }
 }

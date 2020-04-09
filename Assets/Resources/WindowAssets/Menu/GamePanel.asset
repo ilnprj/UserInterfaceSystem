@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54b744a76f8f864da4ab56e9320db7b, type: 3}
   m_Name: GamePanel
   m_EditorClassIdentifier: 
-  window: {fileID: 3846594978388299243, guid: f316d150efb822d4ab7769feafdeb59d, type: 3}
-  id: GamePanel
+  window: {fileID: 3846594978388299243, guid: f41678ba29bf632409f9578d875d0190, type: 3}
+  idWindow: GamePanel

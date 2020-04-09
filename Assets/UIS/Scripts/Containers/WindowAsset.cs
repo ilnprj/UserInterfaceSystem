@@ -15,5 +15,10 @@ namespace UIS
         private Window window = default;
 
         public Window Window => window;
+
+        [SerializeField]
+        private string idWindow;
+
+        public string IdWindow => idWindow;
     }
 }

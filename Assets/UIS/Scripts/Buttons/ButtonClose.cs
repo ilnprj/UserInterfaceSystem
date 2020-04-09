@@ -14,7 +14,7 @@ namespace UIS
         /// <summary>
         /// Action sets automatically
         /// </summary>
-        public override void Action()
+        protected override void Action()
         {
             if (window.Focus)
             {

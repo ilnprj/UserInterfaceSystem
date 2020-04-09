@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54b744a76f8f864da4ab56e9320db7b, type: 3}
   m_Name: Main
   m_EditorClassIdentifier: 
-  window: {fileID: 2685947533047455703, guid: b7bc31cbe82f2794fb870dea5af611ee, type: 3}
-  id: MainScreen
+  window: {fileID: 2685947533047455703, guid: 73cf117a91005a54d8c3484c442a27ab, type: 3}
+  idWindow: Main
