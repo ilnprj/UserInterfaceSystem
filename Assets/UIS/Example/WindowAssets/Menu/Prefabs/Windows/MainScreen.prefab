@@ -63,8 +63,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
@@ -134,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528943892d06bf44d8e7a19fbf2295ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IdWindow: 
 --- !u!225 &8241849661529978524
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -173,7 +172,6 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1676676203010564620, guid: 4ff4a46f3df587c4fa64c0134e17c74c, type: 3}
   - {fileID: 1676676203010564620, guid: 398e2276cde21cd49b9cb062dc76a454, type: 3}
-  internalPool: []
 --- !u!1 &3179010098473653403
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +184,7 @@ GameObject:
   - component: {fileID: 8040124305872781584}
   - component: {fileID: 3357084167917939945}
   - component: {fileID: 5808608656088717646}
-  - component: {fileID: 8964820217896298066}
+  - component: {fileID: 8608906596702876544}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -240,8 +238,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -295,9 +291,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &8964820217896298066
+--- !u!114 &8608906596702876544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,12 +300,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3179010098473653403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7eda653286c204c8c537850b6c29ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ec5161131f53804fac827b80352ca5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   window: {fileID: 0}
-  id: GamePanel
+  windowAsset: {fileID: 11400000, guid: c5f3d2a7faa4f104e8fc81cb892e5d8e, type: 2}
   needClose: 0
 --- !u!1 &4139093907322224985
 GameObject:
@@ -376,8 +370,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
@@ -459,8 +451,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -514,8 +504,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &5800426938848579931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,8 +537,6 @@ MonoBehaviour:
   Events:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &7846989214210609026
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +600,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -690,8 +674,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
@@ -749,8 +731,6 @@ MonoBehaviour:
   eventOnFinished:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   GraphValue: 0
   From: 0
   To: 1

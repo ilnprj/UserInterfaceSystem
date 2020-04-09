@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   window: {fileID: 7479909899242250829, guid: f942253f61c354543a65889a1817c9dd, type: 3}
+  idWindow: Settings

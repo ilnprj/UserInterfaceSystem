@@ -11,8 +11,7 @@ namespace UIS
     public class ButtonActions : ButtonBaseBehaviour
     {
         public UnityEvent Events;
-
-        public override void Action()
+        protected override void Action()
         {
             if (window.Focus)
             {

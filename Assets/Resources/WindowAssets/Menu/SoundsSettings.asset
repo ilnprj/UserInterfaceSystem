@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SoundsSettings
   m_EditorClassIdentifier: 
   window: {fileID: 5614241094604844680, guid: c05827cd23b373f47b8586e5ba7bd360, type: 3}
+  idWindow: SoundsSettings

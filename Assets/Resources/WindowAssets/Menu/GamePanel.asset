@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GamePanel
   m_EditorClassIdentifier: 
   window: {fileID: 3846594978388299243, guid: f41678ba29bf632409f9578d875d0190, type: 3}
+  idWindow: GamePanel
