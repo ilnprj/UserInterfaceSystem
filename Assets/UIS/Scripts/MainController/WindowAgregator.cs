@@ -132,7 +132,6 @@ public class WindowAgregator : MonoBehaviour
         else
         {
             if (newWindow == null) return;
-            WindowsPool.Remove(newWindow);
             newWindow.gameObject.SetActive(true);
         }
     }
