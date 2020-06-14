@@ -29,6 +29,10 @@ namespace UIS
 
             set
             {
+                if (value)
+                {
+                    RefreshWindowHandler?.Invoke();
+                }
                 focus = value;
                 ChangeFocusHandler?.Invoke(value);
             }
